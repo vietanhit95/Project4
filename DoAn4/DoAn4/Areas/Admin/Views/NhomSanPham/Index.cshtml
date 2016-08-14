@@ -1,0 +1,61 @@
+﻿@using PagedList.Mvc;
+@model PagedList.IPagedList<DoAn4.Models.NhomSanPham>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Danh Sách Nhóm Sản Phẩm</h2>
+
+<p>
+    <button class="btn btn-outline btn-info" type="button" style="text-decoration:none;"><i class="fa fa-plus"></i> @Html.ActionLink("Thêm Mới", "Create")</button>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.First().MaNhomSanPham)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().TenNhomSanPham)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Image)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().MoTa)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaNhomSanPham)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenNhomSanPham)
+            </td>
+            <td>
+                <img src="@Url.Content("~/HinhAnhSP/"+item.Image)" width="60" height="80" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MoTa)
+            </td>
+            <td>
+                <button type="button" class="btn btn-outline btn-info" style="margin-bottom:3px;">
+                    <i class="fa fa-pencil-square-o"></i>  @Html.ActionLink("Sửa", "Edit", new { @MaNSP = item.MaNhomSanPham })
+                </button>
+                <button type="button" class="btn btn-outline btn-info" style="margin-bottom:3px;">
+                    <i class="fa fa-pencil-square-o"></i>   @Html.ActionLink("Xóa", "Delete", new { @MaNSP = item.MaNhomSanPham })
+                </button>
+            </td>
+        </tr>
+    }
+
+</table>
+<div>
+    Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }))
+</div>

@@ -1,0 +1,214 @@
+﻿@model DoAn4.Models.BaiViet
+
+@{
+    ViewBag.Title = "DangBai";
+    Layout = "~/Views/Layout/NguoiDungLayout.cshtml";
+}
+<style>
+    .form-horizontal label {
+        margin-bottom: 0px;
+        margin-top: 26px;
+    }
+
+    #divRight {
+        display: none;
+    }
+
+    #slider {
+        display: none;
+    }
+
+    #divMenuLeft {
+        display: none;
+    }
+
+    .mid {
+        display: none;
+    }
+
+    .form-horizontal label {
+        width: 200px;
+    }
+
+    .col-md-10 {
+        margin-top: -35px;
+    }
+</style>
+<div class="them" style="margin-left: 360px;  width: 600px; padding-left: 10px; text-align: center; margin-top: 110px; ">
+    <h2 style="color:green">Đăng Bài Trả Phí</h2>
+    <h1 style="color:red">@ViewBag.ThongBao</h1>
+    @using (Html.BeginForm("DangBai", "QuanLyBaiViet", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+          
+            <hr />
+            @Html.ValidationSummary(true)
+
+            <div class="form-group">
+                <div style="margin-left:30px;color:black;">
+                    @Html.LabelFor(model => model.MaChuyenMuc)</div>
+                <div class="col-md-10" style="margin-left: -150px; margin-top: -32px">
+                    @Html.DropDownList("MaChuyenMuc")
+
+                </div>
+                </div>
+           
+            <div class="form-group" style="margin-top:-25px">
+                <div style="margin-left: 15px; color: black">
+                    @Html.LabelFor(model => model.MaNhomSanPham)</div>
+                <div class="col-md-10" style="margin-left:-102px;margin-top:-30px">
+                    @Html.DropDownList("MaNhomSanPham")
+                </div>
+                </div>
+           
+            @*<div class="form-group">
+                @Html.LabelFor(model => model.MaKhacHang, "MaKhacHang", new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.MaKhacHang)
+                    @Html.ValidationMessageFor(model => model.MaKhacHang)
+                </div>
+            </div>*@
+
+            <div class="form-group" style="margin-top:-25px">
+                <div style="margin-left: 35px; color: black">
+                    @Html.LabelFor(model => model.MaVungMien, new { @class = "control-label col-md-2" })</div>
+                <div class="col-md-10" style="margin-left:-80px;margin-top:-30px">
+                    @Html.DropDownList("MaVungMien")
+                </div>
+                </div>
+          
+            <div class="form-group" style="margin-top:-20px">
+                <div style="margin-left: 44px; color: black">
+                    @Html.LabelFor(model => model.TieuDe, new { @class = "control-label col-md-2" })</div>
+                <div class="col-md-10" style="margin-left:56px;margin-top:-27px">
+                    @Html.EditorFor(model => model.TieuDe)
+                    <br />
+                    <div style="color:red">
+                        @Html.ValidationMessageFor(model => model.TieuDe)
+                    </div>
+                </div>
+                </div>
+          
+            <div class="form-group" style="margin-top:-15px">
+                <div style="margin-left: 36px; color: black">
+                    @Html.LabelFor(model => model.NoiDung, new { @class = "control-label col-md-2" })</div>
+                <div class="col-md-10" style="margin-left:154px;margin-top:-27px">
+                    <textarea name="NoiDung" style="width:300px;height:100px"></textarea>
+                </div>
+                    @*<div class="col-md-10">
+            @Html.EditorFor(model => model.NoiDung)
+            <br />
+            <div style="color:red">
+                @Html.ValidationMessageFor(model => model.NoiDung)</div>
+            </div>*@
+                </div>
+            
+            <div class="form-group" style="margin-top:-22px">
+                <div style="margin-left: 55px; color: black">
+                    @Html.LabelFor(model => model.GiaBan, new { @class = "control-label col-md-2" })</div>
+                <div class="col-md-10" style="margin-left:50px;margin-top:-30px">
+                    @Html.EditorFor(model => model.GiaBan)
+                    <br />
+                    <div style="color:red">
+                        @Html.ValidationMessageFor(model => model.GiaBan)
+                    </div>
+                </div>
+                </div>
+            
+            <div class="form-group" style="margin-top:-18px">
+                <div style="margin-left: 30px; color: black">
+                    @Html.LabelFor(model => model.NgayDang, new { @class = "control-label col-md-2" })</div>
+                <div class="col-md-10" style="margin-left:-54px;margin-top:-30px">
+                    @Html.EditorFor(model => model.NgayDang)
+                    <br />
+                    <div style="color:red">
+                        @Html.ValidationMessageFor(model => model.NgayDang)
+                    </div>
+                </div>
+                </div>
+          
+
+            @*<div class="form-group">
+                @Html.LabelFor(model => model.NgayHetHan, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.NgayHetHan)
+                    @Html.ValidationMessageFor(model => model.NgayHetHan)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.NgayDuyet, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.NgayDuyet)
+                    @Html.ValidationMessageFor(model => model.NgayDuyet)
+                </div>
+            </div>*@
+
+            <div class="form-group" style="margin-top:-16px">
+                <div style="margin-left: 22px; color: black">
+                    @Html.LabelFor(model => model.TenNguoiLienHe, new { @class = "control-label col-md-2" })</div>
+                <div class="col-md-10" style="margin-left:53px;margin-top:-30px">
+                    @Html.EditorFor(model => model.TenNguoiLienHe)
+                    <br />
+                    <div style="color:red">
+                        @Html.ValidationMessageFor(model => model.TenNguoiLienHe)
+                    </div>
+                </div>
+                </div>
+      
+            <div class="form-group" style="margin-top:-14px">
+                <div style="margin-left: 43px; color: black;">
+                    @Html.LabelFor(model => model.DiaChiLienHe, new { @class = "control-label col-md-2" })</div>
+                <div class="col-md-10" style="margin-left: 50px; margin-top: -30px">
+                    @Html.EditorFor(model => model.DiaChiLienHe)
+                    <br />
+                    <div style="color:red">
+                        @Html.ValidationMessageFor(model => model.DiaChiLienHe)
+                    </div>
+                </div>
+                </div>
+            
+            <div class="form-group" style="margin-top:-14px">
+                <div style="margin-left: 20px; color: black">
+                    @Html.LabelFor(model => model.SDTLienHe, new { @class = "control-label col-md-2" })</div>
+                <div class="col-md-10" style="margin-left:50px;margin-top:-30px">
+                    @Html.EditorFor(model => model.SDTLienHe)
+                    <br />
+                    <div style="color:red">
+                        @Html.ValidationMessageFor(model => model.SDTLienHe)
+                    </div>
+                </div>
+                </div>
+           
+            <div class="form-group" style="margin-top:-14px">
+                <div style="margin-left: 50px; color: black">
+                    @Html.LabelFor(model => model.EmailLienHe, new { @class = "control-label col-md-2" })</div>
+                <div class="col-md-10" style="margin-left:50px;margin-top:-30px">
+                    @Html.EditorFor(model => model.EmailLienHe)
+                    <br />
+                    <div style="color:red">
+                        @Html.ValidationMessageFor(model => model.EmailLienHe)
+                    </div>
+                </div>
+                </div>
+   
+            <div class="form-group" style="margin-top:-14px">
+                <div style="margin-left: 55px; color: black">
+                    @Html.LabelFor(model => model.Image, new { @class = "control-label col-md-2" })</div>
+                <div class="col-md-10" style="margin-left:50px;">
+                    <input type="file" name="fileupload" />
+                </div>
+                </div>
+            <hr />
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Đăng bài" style="background-color: green; height: 30px; width: 90px; color: white; cursor: pointer" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+
+ </div>

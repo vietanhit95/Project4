@@ -1,0 +1,124 @@
+﻿@model DoAn4.Models.KhachHang
+
+@{
+    ViewBag.Title = "DangKy";
+    Layout = "~/Views/Layout/NguoiDungLayout.cshtml";
+}
+
+<style>
+    #divRight {
+        display: none;
+    }
+
+    #slider {
+        display: none;
+    }
+
+    #divMenuLeft {
+        display: none;
+    }
+
+    .mid {
+        display: none;
+    }
+    .form-horizontal label {
+        margin-bottom: 0px;
+        margin-top: 26px;
+    }
+    .form-horizontal label {
+        width: 150px;
+    }
+
+    .col-md-10 {
+        margin-top: -30px;
+    }
+  
+</style>
+<div class="them" style="margin-left: 360px; background-color: #bff595; width: 600px; padding-left: 10px; text-align: center; margin-top: 120px; ">
+    <h1 style="color:red">@ViewBag.ThongBao</h1>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h2 style="color:green">Đăng ký</h2>
+            <hr  style=""/>
+            @Html.ValidationSummary(true)
+            <div class="form-group">
+                @Html.LabelFor(model => model.HoTen, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.HoTen)
+
+                    <div style="color:red">@Html.ValidationMessageFor(model => model.HoTen)</div></div>
+            </div>
+            <hr />
+            <div class="form-group">
+                @Html.LabelFor(model => model.TenDangNhap, new { @class = "control-label col-md-2" }) 
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.TenDangNhap)
+              
+                </div>
+                <div style="color:red">
+                    @Html.ValidationMessageFor(model => model.TenDangNhap)</div>
+                </div><hr />
+            <div class="form-group">
+                @Html.LabelFor(model => model.MatKhau, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.MatKhau)
+                
+                    <div style="color:red">@Html.ValidationMessageFor(model => model.MatKhau)</div></div>
+            </div><hr />
+            <div class="form-group">
+                @Html.LabelFor(model => model.DiaChi, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.DiaChi)
+                
+                    <div style="color:red">@Html.ValidationMessageFor(model => model.DiaChi)</div></div>
+            </div><hr />
+            <div class="form-group">
+                @Html.LabelFor(model => model.SDT, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.SDT)
+                
+                    <div style="color:red"> @Html.ValidationMessageFor(model => model.SDT)</div></div>
+            </div><hr />
+            <div class="form-group">
+                @Html.LabelFor(model => model.Email, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Email)
+                <span id="email" style="color:red"></span>
+                    <div style="color:red">@Html.ValidationMessageFor(model => model.Email)</div></div>
+            </div><hr />
+            <div class="form-group">
+                @Html.LabelFor(model => model.NgayDangKi, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.NgayDangKi)
+                   
+                    <div style="color:red">@Html.ValidationMessageFor(model => model.NgayDangKi)</div></div>
+                </div><hr />
+            <div class="form-group">
+                @Html.LabelFor(model => model.SoTienDaNap, new { @class = "control-label col-md-2" })
+               
+                <div class="col-md-10" style="margin-top:-60px;">
+                    @Html.EditorFor(model => model.SoTienDaNap)
+                    <div style="color:red">@Html.ValidationMessageFor(model => model.SoTienDaNap)</div></div>
+            </div><hr />
+            <div class="form-group">
+                @Html.LabelFor(model => model.GhiChu, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.GhiChu)
+               
+                    <div style="color:red">@Html.ValidationMessageFor(model => model.GhiChu)</div></div>
+            </div><hr />
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" id="btnsubmit" style="cursor:pointer" value="Thêm mới" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+
+    @*<div>
+            @Html.ActionLink("Back to List", "Index")
+        </div>*@
+</div>

@@ -1,0 +1,85 @@
+﻿@using DoAn4.Models
+@using PagedList.Mvc
+@model PagedList.PagedList<BaiViet>
+
+<link href="~/Content/TrangChu.css" rel="stylesheet" />
+
+@{
+    ViewBag.Title = "BaiVietDaDuyet";
+    Layout = "~/Views/Layout/NguoiDungLayout.cshtml";
+}
+
+<style>
+    #divRight {
+        display: none;
+    }
+
+    #slider {
+        display: none;
+    }
+
+    #divMenuLeft {
+        display: none;
+    }
+
+    .mid {
+        display: none;
+    }
+
+    .sua a:hover {
+        color: red;
+    }
+</style>
+
+<div id="divBody" style="margin-top:120px">
+    <h2 style="color:green; text-align:center">Các bài đã duyệt</h2>
+    <hr />
+    <h1 style="color:red">@ViewBag.ThongBao</h1>
+    @{ int i = 0; }
+
+    @foreach (var item in Model)
+    {
+        i++;
+        <div id="SanPham">
+            <div id="Image">
+                <a href="@Url.Action("ChiTietSP", "QuanLyBaiViet", new { @MaBaiViet=item.MaBaiViet })">
+                    <img src="@Url.Content("~/HinhAnhSP/"+item.Image)" width="100" height="100" />
+                </a>
+            </div>
+            <div id="ThongTin">
+                <div id="TenSP" style="height:30px"><font color="green"> Nội dung:&nbsp;</font>@item.NoiDung</div>
+                <div id="TenSP" title="@item.TieuDe" style="height:30px"><font color="green">Tiêu đề:&nbsp;</font>@item.TieuDe</div>
+                <div id="Gia" style="color:red"><font color="green">Giá:&nbsp;</font>@String.Format("{0:0,0 VNĐ}", @item.GiaBan)</div>
+                <div id="NguoiLienHe"><font color="green">Người liên hệ:&nbsp;</font> @item.TenNguoiLienHe</div>
+                <div id="SDT"><font color="green">Số điện thoại:&nbsp;</font>@item.SDTLienHe</div>
+                <div id="Email"><font color="green">Email:&nbsp;</font>@item.EmailLienHe</div>
+                <div id="TrangThai"><font color="green">Trạng thái:&nbsp;</font>@item.TrangThai</div>
+                <hr />
+                @*<div class="sua" style="color: #546675;"><h2>@Html.ActionLink("Sửa bài viết", "Sua", new { @MaBV = item.MaBaiViet })</h2></div>*@
+                <div class="sua" style="color: #546675;"><h2>@Html.ActionLink("Xóa bài", "Xoa", new { @MaBV = item.MaBaiViet })</h2></div>
+            </div>
+
+
+        </div>
+        if (i % 3 == 0)
+        {
+            <div style="clear:both"></div>
+        }
+
+    }
+
+
+    <div style="clear:both"></div>
+</div>
+@*tạo link liên kết các trang*@
+Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount
+<div class="page">
+    @Html.PagedListPager(Model, page => Url.Action("BaiVietDaDuyet", new { page = page }))
+</div>
+<style>
+    .page li {
+        display: inline;
+    }
+</style>
+
+

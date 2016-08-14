@@ -1,0 +1,49 @@
+﻿@using PagedList.Mvc;
+@model PagedList.IPagedList<DoAn4.Models.VungMien>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Vùng Miền</h2>
+
+<p>
+    <button class="btn btn-outline btn-info" type="button" style="text-decoration:none;"><i class="fa fa-plus"></i> @Html.ActionLink("Thêm Mới", "Create")</button>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.First().MaVungMien)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().TenVungMien)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaVungMien)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenVungMien)
+            </td>
+            <td>
+                <button type="button" class="btn btn-outline btn-info" style="margin-bottom:3px;">
+                    <i class="fa fa-pencil-square-o"></i>  @Html.ActionLink("Sửa", "Edit", new { MaVM = @item.MaVungMien })
+                </button>
+                <button type="button" class="btn btn-outline btn-info" style="margin-bottom:3px;">
+                    <i class="fa fa-pencil-square-o"></i>   @Html.ActionLink("Xóa", "Delete", new { MaVM = @item.MaVungMien })
+                </button>
+            </td>
+        </tr>
+    }
+
+</table>
+<div>
+    Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }))
+</div>

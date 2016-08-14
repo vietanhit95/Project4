@@ -1,0 +1,201 @@
+﻿@model DoAn4.Models.BaiViet
+
+@{
+    ViewBag.Title = "Xoa";
+    Layout = "~/Views/Layout/NguoiDungLayout.cshtml";
+}
+
+<style>
+    .form-horizontal label {
+        margin-bottom: 0px;
+        margin-top: 26px;
+    }
+
+    #divRight {
+        display: none;
+    }
+
+    #slider {
+        display: none;
+    }
+
+    #divMenuLeft {
+        display: none;
+    }
+
+    .mid {
+        display: none;
+    }
+
+    .form-horizontal label {
+        width: 200px;
+    }
+
+    .col-md-10 {
+        margin-top: -30px;
+    }
+
+    .Edt {
+        border-radius: 5px;
+    }
+    .sua a:hover {
+        color: red;
+    }
+</style>
+<div class="them" style="margin-left:360px; background-color:#d9c9c9; width:600px;padding-left:10px;text-align:center;margin-top:110px  ">
+
+    <h3 style="color:red">Bạn chắc chắn muốn xóa bài viết này?</h3>
+    <div>
+
+        <hr />
+        <dl class="dl-horizontal" style="text-align:center">
+            <dt style="margin-left:-150px; text-align:center">
+                @Html.DisplayNameFor(model => model.MaBaiViet)
+            </dt>
+            
+                <dd style="margin-top: -28px; margin-left: 40px">
+                    @Html.DisplayFor(model => model.MaBaiViet)
+                </dd>
+                
+            <dt style="margin-left:-150px">
+                @Html.DisplayNameFor(model => model.MaChuyenMuc)
+            </dt>
+
+            <dd style="margin-top: -28px; margin-left: 45px">
+                @Html.DisplayFor(model => model.ChuyenMuc.TenChuyenMuc)
+            </dd>
+
+            <dt style="margin-left:-150px">
+                @Html.DisplayNameFor(model => model.MaNhomSanPham)
+            </dt>
+
+            <dd style="margin-top: -28px; margin-left: 100px">
+                @Html.DisplayFor(model => model.NhomSanPham.TenNhomSanPham)
+            </dd>
+
+            <dt style="margin-left:-150px">
+                @Html.DisplayNameFor(model => model.KhachHang.HoTen)
+            </dt>
+
+            <dd style="margin-top: -28px; margin-left: 170px">
+                @Html.DisplayFor(model => model.KhachHang.HoTen)
+            </dd>
+
+            <dt style="margin-left:-150px">
+                @Html.DisplayNameFor(model => model.MaVungMien)
+            </dt>
+
+            <dd style ="margin-top: -28px; margin-left: 90px">
+                @Html.DisplayFor(model => model.VungMien.TenVungMien)
+            </dd>
+
+            <dt style="margin-left:-150px">
+                @Html.DisplayNameFor(model => model.TieuDe)
+            </dt>
+
+            <dd style="margin-top: -28px; margin-left: 60px">
+                @Html.DisplayFor(model => model.TieuDe)
+            </dd>
+
+            <dt style="margin-left:-150px">
+                @Html.DisplayNameFor(model => model.NoiDung)
+            </dt>
+
+            <dd style="margin-top: -28px; margin-left: 90px">
+                @Html.DisplayFor(model => model.NoiDung)
+            </dd>
+
+            <dt style="margin-left:-150px">
+                @Html.DisplayNameFor(model => model.NgayDang)
+            </dt>
+
+            <dd style="margin-top: -28px; margin-left: 140px">
+                @Html.DisplayFor(model => model.NgayDang)
+            </dd>
+
+            @*<dt style="margin-left:-150px">
+                @Html.DisplayNameFor(model => model.NgayHetHan)
+            </dt>
+
+            <dd style="margin-top: -28px;">
+                @Html.DisplayFor(model => model.NgayHetHan)
+            </dd>
+
+            <dt style="margin-left:-150px">
+                @Html.DisplayNameFor(model => model.NgayDuyet)
+            </dt>
+
+            <dd style="margin-top: -28px;">
+                @Html.DisplayFor(model => model.NgayDuyet)
+            </dd>*@
+
+            <dt style="margin-left:-150px">
+                @Html.DisplayNameFor(model => model.TenNguoiLienHe)
+            </dt>
+
+            <dd style="margin-top: -28px; margin-left: 130px">
+                @Html.DisplayFor(model => model.TenNguoiLienHe)
+            </dd>
+
+            <dt style="margin-left:-150px">
+                @Html.DisplayNameFor(model => model.DiaChiLienHe)
+            </dt>
+
+            <dd style="margin-top: -28px; margin-left: 100px">
+                @Html.DisplayFor(model => model.DiaChiLienHe)
+            </dd>
+
+            <dt style="margin-left:-150px">
+                @Html.DisplayNameFor(model => model.SDTLienHe)
+            </dt>
+
+            <dd style="margin-top: -28px; margin-left: 120px">
+                @Html.DisplayFor(model => model.SDTLienHe)
+            </dd>
+
+            <dt style="margin-left:-150px">
+                @Html.DisplayNameFor(model => model.EmailLienHe)
+            </dt>
+
+            <dd style="margin-top: -28px; margin-left: 240px">
+                @Html.DisplayFor(model => model.EmailLienHe)
+            </dd>
+
+            @*<dt style="margin-left:-150px">
+                @Html.DisplayNameFor(model => model.Image)
+            </dt>
+
+            <dd style="margin-top: -28px;">
+                @Html.DisplayFor(model => model.Image)
+            </dd>*@
+
+            <dt style="margin-left:-150px">
+                @Html.DisplayNameFor(model => model.GiaBan)
+            </dt>
+
+            <dd style="margin-top: -28px; margin-left: 80px">
+                @Html.DisplayFor(model => model.GiaBan)
+            </dd>
+
+            @*<dt style="margin-left:-150px">
+                @Html.DisplayNameFor(model => model.TrangThai)
+            </dt>
+
+            <dd style="margin-top: -28px; margin-left: 60px">
+                @Html.DisplayFor(model => model.TrangThai)
+            </dd>*@
+
+</dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Xóa" style="background-color: green; height: 30px; cursor: pointer; width: 90px; color: white;" class="btn btn-default" />
+                <div class="sua" style="color:green">
+                    @Html.ActionLink("Quay lại", "BaiVietCuaKH")</div>
+            </div>
+        }
+    </div>
+</div>

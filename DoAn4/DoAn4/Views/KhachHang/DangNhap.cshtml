@@ -1,0 +1,39 @@
+﻿@{
+    ViewBag.Title = "DangNhap";
+    Layout = "~/Views/Layout/NguoiDungLayout.cshtml";
+}
+<style>
+    #divRight {
+        display: none;
+    }
+
+    #slider {
+        display: none;
+    }
+
+    #divMenuLeft {
+        display: none;
+    }
+
+    .mid {
+        display: none;
+    }
+</style>
+<div class="form-horizontal" style="text-align:center;margin-top:120px">
+    <h2 style="color:green">Đăng nhập</h2>
+    <h1 style="color:red">@ViewBag.ThongBao</h1>
+
+    @using (Html.BeginForm())
+    {
+        <span>Tài khoản:</span> <br />
+        @Html.TextBox("txtTaiKhoan");
+        <br />
+        <span>Mật khẩu:</span><br />
+        <input name="txtMatKhau" type="password" />
+        <br />
+
+        <input type="submit" id="btnsubmit" style="cursor:pointer" value="Đăng nhập" name="btnsubmit" />
+        <br />
+        <a href="@Url.Action("DangKy","KhachHang")" style="color:red">Vui lòng click vào đây nếu chưa có tài khoản ^^</a>
+    }
+</div>

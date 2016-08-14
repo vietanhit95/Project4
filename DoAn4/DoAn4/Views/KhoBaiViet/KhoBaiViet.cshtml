@@ -1,0 +1,52 @@
+﻿@using DoAn4.Models
+@model List<KhoBaiViet>
+
+
+@{
+    ViewBag.Title = "KhoBaiViet";
+    Layout = "~/Views/Layout/NguoiDungLayout.cshtml";
+}
+
+<h2>KhoBaiViet</h2>
+<table>
+    <tr>
+        <td>
+           Mã bài viết
+        </td>
+        <td>
+           Tiêu đề
+        </td>
+        <td>
+            Ảnh bìa
+        </td>
+        <td>
+           Giá
+        </td>
+        <td>
+           Tông tiền đã nạp
+        </td>
+    </tr>
+    @foreach (var item in Model)
+    {
+
+        <tr>
+            <td>
+                @item.maBV
+            </td>
+            <td>
+                @item.tenBV
+            </td>
+            <td>
+                <img src="@Url.Content("~/HinhAnhSP/"+item.HinhAnh)" width="50" height="50" />
+            </td>
+            <td>
+                @String.Format("{0:0,0 VNĐ}", @item.Gia.ToString()) VNĐ
+            </td>
+            <td>
+                @String.Format("{0:0,0 VNĐ}", @item.ThanhTien.ToString()) VNĐ
+            </td>
+        </tr>
+
+    }
+
+</table>

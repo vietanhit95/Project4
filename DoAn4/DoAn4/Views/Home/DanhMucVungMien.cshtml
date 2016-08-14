@@ -1,0 +1,16 @@
+﻿@using DoAn4.Models
+@model List<VungMien>
+
+@{
+    ViewBag.Title = "DanhMucVungMien";
+    Layout = "~/Views/Layout/NguoiDungLayout.cshtml";
+}
+
+@foreach (var item in Model)
+{
+    <a style="width:250px;" href="@Url.Action("BaiVietTheoVungMien", new { @MaVM = item.MaVungMien })" class="button">@item.TenVungMien</a>
+    <br />
+
+}
+
+

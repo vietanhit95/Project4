@@ -1,0 +1,165 @@
+﻿
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/NguoiDungCssLayout/fonts.css" rel="stylesheet" />
+    <link href="~/Content/NguoiDungCssLayout/screen.css" rel="stylesheet" />
+    <link href="~/Content/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    @*nivo slider*@
+    <link href="~/Nivo%20slider/nivo-slider.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Nivo%20slider/jquery.nivo.slider.js"></script>
+    <script src="~/Nivo%20slider/jquery.nivo.slider.pack.js"></script>
+
+    @*editor*@
+    <script src="~/tinymce/js/tinymce/tinymce.min.js"></script>
+    <script>tinymce.init({ selector: 'textarea' });</script>
+    <style>
+        .dx a:hover{
+            color:red;
+        }
+    </style>
+
+
+    <title></title>
+</head>
+<body>
+
+
+    <div id="Main">
+        <section class="blank">
+            <div class="topp">
+                <div class="flash">
+                    @*<div class="Phone">
+                        <i class="fa fa-phone"></i>
+                        0972471294
+                    </div>*@
+                    @*<div style="padding-left:800px; float:left; margin-top:-1%;height:20px;color:white;">
+                        </div>*@
+                    @*div đăng ký đăng nhập*@
+
+                    <div class="DangKyDangNhap">
+                        @using (Html.BeginForm("DangXuat", "KhachHang", FormMethod.Post))
+                        {
+                            if (Session["TenDangNhap"] != null)
+                            {
+                                <a href="@Url.Action("BaiVietCuaKH","BaiVietCuaKH")"><span style="margin-left:600px; width:100px">Xin chào: @Session["TenDangNhap"].ToString()</span></a>
+                                <span class="tk">&nbsp;|&nbsp;</span>
+                                <input type="submit" class="dx" style="background:none;border:none;cursor:pointer;outline:none;color:white;" value="Đăng Xuất" />
+                            }
+
+                        }
+
+
+                        @*<i class="fa fa-plus"></i>*@
+                        @*@Html.Action("KhoHangPartial","KhoBaiViet")*@
+                        @*<a href="@Url.Action("DangKy","KhachHang")">Đăng ký</a>|*@
+                        >>><i class="fa fa-sign-in"></i>
+                        <a href="@Url.Action("DangNhap","KhachHang")">Đăng nhập</a>
+                        <link href="~/Content/NguoiDungCssLayout/NguoiDungCss.css" rel="stylesheet" />
+
+                    </div>
+
+
+                </div>
+                <div class="flash success" id="divDanhMuc">
+                    <div class="img">
+                        <a href="@Url.Action("Index", "Home")">
+                            <img src="~/HinhAnh/raovatonline.png" />
+                        </a>
+                    </div>
+                    @*Tìm kiếm*@
+                    <div id="TimKiem" style="margin-left:300px;margin-top:0px;">
+                        @using (Html.BeginForm("KetQuaTimKiem", "TimKiem", FormMethod.Post))
+                        {
+                            @Html.TextBox("txtTimKiem", "", htmlAttributes: new { @class = "TextBoxTimKiem", @placeholder = "Tìm kiếm theo tiêu đề bài viết" })
+                            <div id="imgtimkiem">
+                                <button type="submit"><img src="~/HinhAnh/search-png-white-search-icon-white.png" /></button>
+                            </div>
+                        }
+                    </div>
+                    <ul class="Menu">
+                        <li>
+                            <a href="@Url.Action("Index", "Home")">Trang Chủ</a>
+                        </li>
+                        <li style="color:#a0ae3f">
+                            @*@using (Html.BeginForm("ThemKhoBV", "KhoBaiVet", new { @maBV = Model.MaBaiVet, @url=Request.Url.ToString() }))*@
+                            <a href="@Url.Action("DangBai", "QuanLyBaiViet")">Đăng bài trả phí</a>
+                        </li>
+                        <li style="color: #00986a">
+                            <a href="@Url.Action("Them", "QuanLyBaiViet")">Đăng bài miễn phí</a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="mid">
+            <div id="divMenuLeft">
+                <div class="activity">
+                    @Html.Action("VungMienPartial", "Home")
+
+                </div>
+            </div>
+
+
+
+            <div id="slider" class="nivoSlider">
+
+                <img src="~/HinhAnh/Nen-lua-chon-quang-cao-Facebook-hay-Google-Adwords-5.jpg" />
+                <img src="~/HinhAnh/cac_tam_anh_chup_hinh_quang_cao_tuyet_dep_1.jpg" />
+                <img src="~/HinhAnh/10268572_10153792393616815_5096218915035730117_n.png" />
+            </div>
+        </section>
+        <div id="Content" style="margin-left:30px">
+            @RenderBody()
+        </div>
+        <section>
+            <div>
+                @Html.Action("LoaiSanPham", "LoaiSanPham")
+            </div>
+
+
+
+
+        </section>
+
+        @*<section class="blank items">
+            <div id="divLeft">
+
+                <div class="item">
+                    <div class="item-info">
+                        @Html.Action("ChuDePartyal", "ChuDe")
+                    </div>
+                </div>
+            </div>
+            <div id="divRight">
+                @RenderSection("ContentRight", false)
+
+            </div>
+
+            <div style="clear:both"></div>
+            <div>
+                <a href="#" class="button button-buy">Giới Thiệu</a>
+            </div>
+
+        </section>*@
+    </div>
+    <script type="text/javascript">
+        $(window).load(function () {
+            $('#slider').nivoSlider({
+                controlNav: false,
+                nextText: '',
+                prevText: '',
+            });
+        }
+        );
+    </script>
+</body>
+</html>

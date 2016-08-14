@@ -1,0 +1,10 @@
+﻿@using DoAn4.Models;
+@model List<NhomSanPham>
+
+@{
+    foreach (var item in Model)
+    {
+        <a href="@Url.Action("BaiVietTheoChuDe", new { @MaNhom = item.MaNhomSanPham })" class="button">@item.TenNhomSanPham</a>
+    }
+    <a href="@Url.Action("DanhMucNhom")" class="button">Xem thêm...</a>
+}

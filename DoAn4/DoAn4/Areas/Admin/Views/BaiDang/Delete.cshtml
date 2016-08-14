@@ -1,0 +1,164 @@
+﻿@model DoAn4.Models.BaiViet
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Xóa Bài Đăng</h2>
+
+
+<div>
+    
+    <hr />
+    <dl class="dl-horizontal">
+        @*<dt>
+                @Html.DisplayNameFor(model => model.MaBaiViet)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.MaBaiViet)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.MaChuyenMuc)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.MaChuyenMuc)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.MaNhomSanPham)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.MaNhomSanPham)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.MaKhachHang)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.MaKhachHang)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.MaVungMien)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.MaVungMien)
+            </dd>*@
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TieuDe)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TieuDe)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NoiDung)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NoiDung)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NgayDang)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgayDang)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NgayHetHan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgayHetHan)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NgayDuyet)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgayDuyet)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TenNguoiLienHe)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenNguoiLienHe)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DiaChiLienHe)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DiaChiLienHe)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SDTLienHe)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SDTLienHe)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmailLienHe)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmailLienHe)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Image)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Image)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GiaBan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GiaBan)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TrangThai)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TrangThai)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <button class="btn btn-outline btn-info" type="button" style="text-decoration:none;">
+                <i class="fa fa-arrow-left"></i>@Html.ActionLink("Quay Lại", "Index")
+            </button>
+            <input type="submit" value="Xóa Bài" class="btn btn-default" /> 
+        </div>
+    }
+</div>

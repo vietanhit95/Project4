@@ -1,0 +1,153 @@
+﻿@model DoAn4.Models.BaiViet
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Duyệt Bài Đăng</h2>
+@using (Html.BeginForm("Edit", "DuyetBai", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.MaBaiViet)
+        <div class="form-group">
+            <div class="col-md-10">
+                @Html.ValidationSummary(true)
+                @Html.HiddenFor(model => model.MaChuyenMuc)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-10">
+                @Html.ValidationSummary(true)
+                @Html.HiddenFor(model => model.MaNhomSanPham)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-10">
+                @Html.ValidationSummary(true)
+                @*@Html.HiddenFor(model => model.MaKhacHang)*@
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-10">
+                @Html.ValidationSummary(true)
+                @Html.HiddenFor(model => model.MaVungMien)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TieuDe, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TieuDe)
+                @Html.ValidationMessageFor(model => model.TieuDe)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.NoiDung, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.NoiDung)
+                @Html.ValidationMessageFor(model => model.NoiDung)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.NgayDang, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.NgayDang)
+                @Html.ValidationMessageFor(model => model.NgayDang)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.NgayHetHan, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.NgayHetHan)
+                @Html.ValidationMessageFor(model => model.NgayHetHan)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.NgayDuyet, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.NgayDuyet)
+                @Html.ValidationMessageFor(model => model.NgayDuyet)
+            </div>
+        </div>
+        @Html.HiddenFor(model => model.MaKhachHang)
+        <div class="form-group">
+            @Html.LabelFor(model => model.TenNguoiLienHe, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TenNguoiLienHe)
+                @Html.ValidationMessageFor(model => model.TenNguoiLienHe)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DiaChiLienHe, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DiaChiLienHe)
+                @Html.ValidationMessageFor(model => model.DiaChiLienHe)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.SDTLienHe, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.SDTLienHe)
+                @Html.ValidationMessageFor(model => model.SDTLienHe)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.EmailLienHe, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.EmailLienHe)
+                @Html.ValidationMessageFor(model => model.EmailLienHe)
+            </div>
+        </div>
+
+        <div class="form-group">
+           @Html.LabelFor(model => model.Image, new { @class = "control-label col-md-2" })
+            <div class="col-md-10"> @Html.EditorFor(model => model.Image)</div>
+            @*<div class="col-md-10">
+                <input type="file" name="photo" accept="image/x-png,image/gif,image/jpeg" />
+            </div>*@
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.GiaBan, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.GiaBan)
+                @Html.ValidationMessageFor(model => model.GiaBan)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TrangThai, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.TrangThai, new SelectList(new [] {"Co","Ko","NULL"} , "Co") , new { @class = "control-label col-md-2" })
+                @*@Html.EditorFor(model => model.TrangThai)*@
+                @Html.ValidationMessageFor(model => model.TrangThai)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Lưu" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    <button class="btn btn-outline btn-info" type="button" style="text-decoration:none;">
+        <i class="fa fa-arrow-left"></i> @Html.ActionLink("Quay Lại", "Index")
+    </button>
+</div>

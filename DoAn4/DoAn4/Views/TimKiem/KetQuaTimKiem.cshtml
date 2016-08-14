@@ -1,0 +1,68 @@
+﻿@using PagedList.Mvc;
+@using PagedList;
+@model IPagedList<DoAn4.Models.BaiViet>
+<link href="~/Content/TrangChu.css" rel="stylesheet" />
+@{
+    ViewBag.Title = "KetQuaTimKiem";
+    Layout = "~/Views/Layout/NguoiDungLayout.cshtml";
+}
+<style>
+    #divRight {
+        display: none;
+    }
+
+    #slider {
+        display: none;
+    }
+
+    #divMenuLeft {
+        display: none;
+    }
+
+
+    .mid {
+        display: none;
+    }
+</style>
+<h2 style="margin-left:2%;font-weight:normal;color:black;">Kết quả tìm kiếm</h2>
+
+<div id="divBody" style="margin-top:100px">
+    <div>@ViewBag.ThongBao</div>
+    @{ int i = 0; }
+
+    @foreach (var item in Model)
+    {
+        i++;
+        <div id="SanPham">
+            <a href="@Url.Action("ChiTietSP", "QuanLyBaiViet", new { @MaBaiViet=item.MaBaiViet })">
+                <div id="Image"><img src="@Url.Content("~/HinhAnhSP/"+item.Image)" width="100" height="100" /> </div>
+            </a>
+            <div id="ThongTin">
+                <div id="TenSP">@item.NoiDung</div>
+                <div id="TenSP" title="@item.TieuDe">@item.TieuDe</div>
+                <div id="Gia" style="color:red"><font color="green">Giá:</font>@String.Format("{0:0,0 VNĐ}", @item.GiaBan)</div>
+
+            </div>
+
+
+        </div>
+        if (i % 3 == 0)
+        {
+            <div style="clear:both"></div>
+        }
+
+    }
+
+
+    <div style="clear:both"></div>
+</div>
+@*tạo link liên kết các trang*@
+Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount
+<div class="page">
+    @Html.PagedListPager(Model, page => Url.Action("KetQuaTimKiem", new { page = page }))
+</div>
+<style>
+    .page li {
+        display: inline;
+    }
+</style>

@@ -1,0 +1,17 @@
+﻿@using DoAn4.Models;
+@model List<VungMien>
+
+@{
+    <h1 class="item-header">Địa Phương</h1>
+    foreach (var item in Model)
+    {
+        <div class="activity-list-update">
+            <a href="@Url.Action("BaiVietTheoVungMien", "Home", new { @MaVM=item.MaVungMien})">>@item.TenVungMien</a>
+            <div class="clear"></div>
+        </div>
+    }
+
+}
+<a href="@Url.Action("DanhMucVungMien")" class="item-footer green">
+    Xem Thêm
+</a>

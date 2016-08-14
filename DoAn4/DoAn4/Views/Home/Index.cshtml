@@ -1,0 +1,56 @@
+﻿@using DoAn4.Models;
+@using PagedList.Mvc
+@model PagedList.PagedList<BaiViet>
+
+<link href="~/Content/TrangChu.css" rel="stylesheet" />
+
+@{
+    Layout = "~/Views/Layout/NguoiDungLayout.cshtml";
+    //ViewBag.Title = "Index";
+}
+@*@section ContentRight{
+
+}*@
+
+@*Trang index*@
+<div id="divBody">
+    @{ int i = 0; }
+
+    @foreach (var item in Model)
+    {
+        i++;
+        <div id="SanPham">
+            <div id="Image">
+                <a href="@Url.Action("ChiTietSP", "QuanLyBaiViet", new { @MaBaiViet=item.MaBaiViet })">
+                    <img src="@Url.Content("~/HinhAnhSP/"+item.Image)" width="100" height="100" />
+                </a>
+            </div>
+            <div id="ThongTin">
+                <div id="TenSP" style="height:30px">@item.NoiDung</div>
+                <div id="TenSP" title="@item.TieuDe" style="height:30px">@item.TieuDe</div>
+                <div id="Gia" style="color:red"><font color="green">Giá:&nbsp;</font>@String.Format("{0:0,0 VNĐ}", @item.GiaBan)</div>
+            </div>
+
+
+        </div>
+        if (i % 3 == 0)
+        {
+            <div style="clear:both"></div>
+        }
+
+    }
+
+
+    <div style="clear:both"></div>
+</div>
+    @*tạo link liên kết các trang*@
+    Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount
+    <div class="page">
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }))
+    </div>
+
+<style>
+    .page li {
+        display: inline;
+    }
+</style>

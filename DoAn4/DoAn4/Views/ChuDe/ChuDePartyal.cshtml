@@ -1,0 +1,10 @@
+﻿@using DoAn4.Models;
+@model List<NhomSanPham>
+<h1>Nhóm Sản Phẩm</h1>
+@foreach(var item in Model)
+{
+    <div style="color:green"><a href="@Url.Action("BaiVietTheoNhom","ChuDe", new { @MaCD = item.MaNhomSanPham })">@item.TenNhomSanPham</a></div>
+}
+<div><a href="@Url.Action("DanhMucNhom")">Xem Thêm...</a></div>
+
+

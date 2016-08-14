@@ -1,0 +1,44 @@
+﻿@using DoAn4.Models
+@model List<BaiViet>
+
+<link href="~/Content/TrangChu.css" rel="stylesheet" />
+@{
+    ViewBag.Title = "BaiVietTheoVungMien";
+    Layout = "~/Views/Layout/NguoiDungLayout.cshtml";
+}
+
+<h1>@ViewBag.baiviet</h1>
+
+@{ int i = 0; }
+
+@foreach (var item in Model)
+{
+    i++;
+    <div id="SanPham">
+        <div id="Image">
+            <a href="@Url.Action("ChiTietSP", "QuanLyBaiViet", new { @MaBaiViet=item.MaBaiViet })">
+                <img src="@Url.Content("~/HinhAnhSP/"+item.Image)" width="100" height="100" />
+            </a>
+        </div>
+        <div id="ThongTin">
+            <div id="TenSP">@item.NoiDung</div>
+            <div id="TenSP" title="@item.TieuDe">@item.TieuDe</div>
+            <div id="Gia" style="color:red"><font color="green">Giá:</font>@String.Format("{0:0,0 VNĐ}", @item.GiaBan)</div>
+        </div>
+
+
+    </div>
+    if (i % 3 == 0)
+    {
+        <div style="clear:both"></div>
+    }
+
+}
+
+<style>
+    #SanPham li {
+        display: inline;
+    }
+</style>
+<div style="clear:both"></div>
+

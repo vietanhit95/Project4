@@ -1,0 +1,103 @@
+﻿@using PagedList.Mvc;
+@model PagedList.IPagedList<DoAn4.Models.KhachHang>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Quản Lý Thành Viên</h2>
+<style>
+    table{
+        border:1px solid #ddd;
+    }
+    td {
+        border: 1px solid #ddd;
+    }
+</style>
+
+<p>
+    <button class="btn btn-outline btn-info" type="button" style="text-decoration:none;"><i class="fa fa-plus"></i> @Html.ActionLink("Thêm Thành Viên", "Them")</button> 
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.First().MaKhachHang)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().HoTen)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().TenDangNhap)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().MatKhau)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().DiaChi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().SDT)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().NgayDangKi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().SoTienDaNap)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().GhiChu)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaKhachHang)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HoTen)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenDangNhap)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MatKhau)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DiaChi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SDT)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NgayDangKi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SoTienDaNap)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GhiChu)
+            </td>
+            <td>
+                <button type="button" class="btn btn-outline btn-info" style="margin-bottom:3px;"><i class="fa fa-pencil-square-o"></i>  @Html.ActionLink("Sửa", "Sua", new { MaKH = item.MaKhachHang })</button>           
+                <button type="button" class="btn btn-outline btn-info" style="margin-left:2px;"><i class="fa fa-trash-o"></i>  @Html.ActionLink("Xóa", "Xoa", new { MaKH = item.MaKhachHang })</button>  
+            </td>
+        </tr>
+    }
+
+</table>
+
+<div class="Page-Trang">
+    Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }))
+</div>
+
